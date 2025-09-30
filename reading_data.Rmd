@@ -131,7 +131,7 @@ poke[["name"]]
 
 ## Closing thoughts
 
-
+Be reasonable
 
 
 
