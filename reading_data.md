@@ -85,3 +85,52 @@ swm_df =
     score = metascore_vec,
     runtime = runtime_vec)
 ```
+
+## Get some water data
+
+This is coming from an API
+
+``` r
+nyc_water = 
+  GET("https://data.cityofnewyork.us/resource/ia2d-e54m.json") |> 
+  content("text") |>
+  jsonlite::fromJSON() |>
+  as_tibble()
+```
+
+## BRFSS
+
+Same process, different data
+
+``` r
+brfss_smart2010 = 
+  GET("https://chronicdata.cdc.gov/resource/acme-vg9e.csv",
+      query = list("$limit" = 5000)) |> 
+  content("parsed")
+```
+
+    ## Rows: 5000 Columns: 23
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (16): locationabbr, locationdesc, class, topic, question, response, data...
+    ## dbl  (6): year, sample_size, data_value, confidence_limit_low, confidence_li...
+    ## lgl  (1): locationid
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+## Some data aren’t so nice
+
+Let’s look at Pokemon ..
+
+``` r
+poke = 
+  GET("http://pokeapi.co/api/v2/pokemon/1") |>
+  content()
+
+poke[["name"]]
+```
+
+    ## [1] "bulbasaur"
+
+## Closing thoughts
