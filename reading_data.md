@@ -134,3 +134,5 @@ poke[["name"]]
     ## [1] "bulbasaur"
 
 ## Closing thoughts
+
+Be reasonable
